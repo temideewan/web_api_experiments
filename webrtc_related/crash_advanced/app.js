@@ -6,11 +6,26 @@ let peerConnection;
 let localStream;
 let remoteStream;
 
+let channelParameters = {
+  // A variable to hold a local audio track.
+  localAudioTrack: null,
+  // A variable to hold a local video track.
+  localVideoTrack: null,
+  // A variable to hold a remote audio track.
+  remoteAudioTrack: null,
+  // A variable to hold a remote video track.
+  remoteVideoTrack: null,
+  // A variable to hold the remote user id.s
+  remoteUid: null,
+};
+
+
 let uid = String(Math.floor(Math.random() * 10000)); 
-let token = null;
+let userId1 = "975397efa8764a01ac2df7a71bbdc418";
+let token = "007eJxSYEhxnOh/XeSRs/D0d7+fluv5rz/2bSJ7bE3RVZv/T0vqrrgrMCQlJRmbpRmkWJqZpZikGCZaJlqampmnJFokmRtZGCaZMrdJpjUEMjKs9TzIwMTACMYgPguUzE3MzFNgsDQ3NbY0T01LtDA3M0k0MExMNkpJM080N0xKSkk2MbQA6YLoI6wWEAAA//9NZDR3";
 let client;
 
-let servers = {
+ let servers = {
   iceServers: [
     {
       urls: ["stun:stun1.1.google.com:19302", "stun:stun2.1.google.com:19302"],
@@ -19,7 +34,11 @@ let servers = {
 };
 
 let init = async () => {
-  const agoraEngine = AgoraRTC.createClient({mode: "rtc"})
+  const agoraEngine = AgoraRTC.createClient({mode: "rtc", codec: "vp9"})
+  await agoraEngine.join(APP_ID, "main", token, userId1)
+
+  agoraEngine.on("user-joined", handlePeerJoined)
+  
   localStream = await navigator.mediaDevices.getUserMedia({
     video: true,
     audio: false,
@@ -29,6 +48,10 @@ let init = async () => {
   user1Video.srcObject = localStream;
 };
 
+
+let handlePeerJoined = async(memberId) => {
+  console.log(`A new peer has joined this room ${memberId}`);
+}
 let createPeerConnection = async (sdpType) => {
   peerConnection = new RTCPeerConnection(servers);
   remoteStream = new MediaStream();
