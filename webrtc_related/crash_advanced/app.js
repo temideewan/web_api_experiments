@@ -1,3 +1,4 @@
+import AgoraRTC from "agora-rtc-sdk-ng";
 let APP_ID = 'bbb36f0d966d4d1a9a9567da8b7281b5';
 
 
@@ -18,7 +19,7 @@ let servers = {
 };
 
 let init = async () => {
-  console.log(AgoraRTC);
+  const agoraEngine = AgoraRTC.createClient({mode: "rtc"})
   localStream = await navigator.mediaDevices.getUserMedia({
     video: true,
     audio: false,
