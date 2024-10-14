@@ -1,0 +1,14 @@
+button {
+  --background-color: green;
+  display: flex;
+  width: fit-content;
+  border: 1px solid transparent;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  /* border-radius: 50%; */
+  background-color: var(--background-color);
+  color: white;
+}

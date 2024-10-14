@@ -5,9 +5,21 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+      .custom-pay {
+        background-color: green;
+        width: fit-content;
+      }
+    </style>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+    </div>
+    <pay-by-app background-color="#fabfab" text-color="red" width="50px" height="80px" style="background-color: green; color: red;"></pay-by-app>
     <script type="module" src="/main.js"></script>
   </body>
 </html>

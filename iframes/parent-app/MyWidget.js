@@ -3,9 +3,9 @@ import { node, dom } from 'jsx-pragmatic';
 let MyWidget = zoid.create({
   tag: 'my-widget',
   url: 'http://localhost:5174',
-  dimensions: {
-    width: '100vw',
-    height: '100vh',
+  autoResize: {
+    width: false,
+    height: true,
   },
   containerTemplate: function containerTemplate({
     doc,
@@ -16,9 +16,8 @@ let MyWidget = zoid.create({
     let container = doc.createElement('div');
     container.id = uid;
     container.appendChild(frame);
-    frame.setAttribute('frameborder', '0')
-    frame.setAttribute('id', 'pay-by-app-frame')
     container.appendChild(prerenderFrame);
+    frame.setAttribute('id', 'pay-by-app-frame')
     return container;
   },
 });

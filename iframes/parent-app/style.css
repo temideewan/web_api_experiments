@@ -95,21 +95,24 @@ button:focus-visible {
   }
 }
 
-#pay-by-app {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* background-color: red; */
-}
 
 #pay-by-app [title^="prerender"] {
   display: none;
 }
 
 #pay-by-app-frame {
-  width: 100vw;
-  height: 100vh;
+  z-index: 2147483647;
+  background: rgba(0, 0, 0, 0.75) !important;
+  border: 0px none transparent;
+  overflow: hidden;
+  margin: 0px;
+  padding: 0px;
+  -webkit-tap-highlight-color: transparent;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.3s;
+  visibility: visible;
 } 
