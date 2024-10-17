@@ -17,15 +17,27 @@ class PayByApp extends HTMLElement {
     this.addEventListener('click', this)
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
-  handleEvent(event){
+  async handleEvent(event){
     event.preventDefault();
-    appRef = this.mountPayByApp();
+    this.mountPayByApp();
+  }
+  closeApp(received){
+    console.log(this.appRef)
+    this.appRef.close().then(() => {
+      const p = document.createElement('p');
+      p.textContent = received;
+      this.shadowRoot.appendChild(p);
+      console.log(received);
+    })
   }
   mountPayByApp(){
-    return MyWidget({
-      passDownFunc: () => {},
+    this.appRef = MyWidget({
+      closeApp: (received) => {
+        this.closeApp(received);
+      },
       name: 'temidayo',
-    }).render('#pay-by-app')
+    });
+    this.appRef.render('#pay-by-app')
   }
   connectedCallback(){
     const linkElem = document.createElement("link");

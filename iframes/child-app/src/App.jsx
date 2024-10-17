@@ -10,7 +10,7 @@ function App(props) {
         <code>{props.name || 'undefined'}</code>
       </p>
       <input value={myWord} onChange={(e) => changeMyWord(e.target.value)} />
-      <button onClick={() => props.passDownFunc(myWord)}>
+      <button onClick={() => props.closeApp(myWord)}>
         Pass this word up to parent
       </button>
     </div>
@@ -19,7 +19,7 @@ function App(props) {
 
 App.propTypes = {
   name: PropTypes.string,
-  passDownFunc: PropTypes.func,
+  closeApp: PropTypes.func,
 };
 
 export default App;
