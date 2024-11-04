@@ -85,7 +85,7 @@ let PayByAppWidget = zoid.create({
     container.style.maxHeight = '100%';
     frame.setAttribute(
       'style',
-      `width: 100%; max-width: 500px; height: 100%; max-height: 750px; margin: 50px auto; border-radius: 12px;`
+      `width: 100%;  height: 100%; border-radius: 12px;`
     );
     frame.setAttribute('class', 'frame-in')
     return container;
