@@ -1,0 +1,17 @@
+{
+  "name": "pay-by-app-widget",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.10"
+  },
+  "dependencies": {
+    "@krakenjs/zoid": "^10.3.3"
+  }
+}
